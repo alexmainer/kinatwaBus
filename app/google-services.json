@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "147641483314",
+    "project_id": "avispabikehireapplication",
+    "storage_bucket": "avispabikehireapplication.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147641483314:android:852101e9a8c50e27acbc2b",
+        "android_client_info": {
+          "package_name": "com.mit.avispabikehireapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqTBXcvh6LaBGsTqbxYilEzGUDH7VZPu4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
