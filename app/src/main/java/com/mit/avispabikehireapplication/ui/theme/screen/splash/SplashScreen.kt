@@ -25,6 +25,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.mit.avispabikehireapplication.R
 import com.mit.avispabikehireapplication.navigation.ROUTE_HOME
+import com.mit.avispabikehireapplication.navigation.ROUTE_INDEX
+import com.mit.avispabikehireapplication.navigation.ROUTE_REGISTER
 import kotlinx.coroutines.delay
 
 
@@ -38,14 +40,14 @@ fun SplashScreen(navController: NavController) {
         scale.animateTo(
             targetValue = 0.7f,
             animationSpec = tween(
-                durationMillis = 500,
+                durationMillis = 3000,
                 easing = {
                     OvershootInterpolator(2f).getInterpolation(it)
                 }
             )
         )
-        delay(3000L)
-        navController.navigate(ROUTE_HOME)
+        delay(2000L)
+        navController.navigate(ROUTE_INDEX)
     }
     Box(
         modifier = Modifier
@@ -59,7 +61,6 @@ fun SplashScreen(navController: NavController) {
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .background(MaterialTheme.colorScheme.primary)
                 .clip(shape = RoundedCornerShape(50.dp))
                 .scale(scale.value)
         )

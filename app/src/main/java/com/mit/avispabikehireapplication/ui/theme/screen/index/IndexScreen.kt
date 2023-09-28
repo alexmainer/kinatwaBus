@@ -84,7 +84,7 @@ fun IndexScreen(controller: NavHostController) {
         Spacer(modifier = Modifier.height(30.dp))
         Button(
             onClick = {
-                      controller.navigate(ROUTE_HOME)
+                      controller.navigate(ROUTE_REGISTER)
 
             },
             colors = ButtonDefaults.buttonColors(Color.Black),

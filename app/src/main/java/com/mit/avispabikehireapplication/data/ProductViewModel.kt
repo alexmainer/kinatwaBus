@@ -59,7 +59,7 @@ class ProductViewModel (var controller: NavHostController, var context: Context)
     ): SnapshotStateList<Product> {
         var ref = FirebaseDatabase.getInstance().getReference().child("Products")
 
-        progress.show()
+//        progress.show()
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 progress.dismiss()
@@ -78,33 +78,3 @@ class ProductViewModel (var controller: NavHostController, var context: Context)
         return products
     }
 }
-
-//    fun deleteProduct(id: String) {
-//        var delRef = FirebaseDatabase.getInstance().getReference()
-//            .child("Products/$id")
-//        progress.show()
-//        delRef.removeValue().addOnCompleteListener {
-//            progress.dismiss()
-//            if (it.isSuccessful) {
-//                Toast.makeText(context, "Product deleted", Toast.LENGTH_SHORT).show()
-//            } else {
-//                Toast.makeText(context, it.exception!!.message, Toast.LENGTH_SHORT).show()
-//            }
-//        }
-//    }
-
-//    fun updateProduct(name: String, quantity: String, price: String, id: String) {
-//        var updateRef = FirebaseDatabase.getInstance().getReference()
-//            .child("Products/$id")
-//        progress.show()
-//        var updateData = Product(name, quantity, price, id)
-//        updateRef.setValue(updateData).addOnCompleteListener {
-//            progress.dismiss()
-//            if (it.isSuccessful) {
-//                Toast.makeText(context, "Update successful", Toast.LENGTH_SHORT).show()
-//            } else {
-//                Toast.makeText(context, it.exception!!.message, Toast.LENGTH_SHORT).show()
-//            }
-//        }
-//    }
-//}

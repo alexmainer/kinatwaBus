@@ -1,10 +1,12 @@
 package com.mit.avispabikehireapplication.ui.theme.screen.details
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.items
@@ -30,7 +32,7 @@ import com.mit.avispabikehireapplication.model.Product
 @Composable
 fun DetailsScreen(controller: NavHostController) {
 
-    Column(modifier = Modifier.fillMaxSize(),
+    Column(modifier = Modifier.fillMaxSize().padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally) {
 
         var context = LocalContext.current
@@ -43,10 +45,12 @@ fun DetailsScreen(controller: NavHostController) {
 
         Column(
             modifier = Modifier
-                .fillMaxSize(),
+                .fillMaxSize()
+                .background(androidx.compose.ui.graphics.Color.White)
+            ,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "All products",
+            Text(text = "View Booking",
                 fontSize = 30.sp,
                 fontFamily = FontFamily.Cursive,
                 color = androidx.compose.ui.graphics.Color.Red)
