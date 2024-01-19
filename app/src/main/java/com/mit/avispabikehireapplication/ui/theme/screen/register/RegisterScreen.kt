@@ -25,8 +25,10 @@ import androidx.compose.material.icons.filled.MailOutline
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -59,18 +61,8 @@ fun RegisterScreen(controller:NavHostController) {
     var confpass by remember { mutableStateOf(TextFieldValue("")) }
     val context= LocalContext.current
 
-    Box(
-        modifier = Modifier.fillMaxSize()
-    ) {
 
-        Image(
-            painter = painterResource(id = R.drawable.background), // Replace with your image resource
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
-
-        Column(
+    Column(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color.White)
@@ -88,14 +80,14 @@ fun RegisterScreen(controller:NavHostController) {
                 fontSize = 40.sp
             )
 
-            Spacer(modifier = Modifier.height(19.dp))
+            Spacer(modifier = Modifier.height(10.dp))
 
             Image(
-                painter = painterResource(id = R.drawable.ic),
+                painter = painterResource(id = R.drawable.log),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .size(150.dp)
+                    .size(200.dp)
                     .clip(CircleShape)
                     .border(
                         width = 5.dp,
@@ -103,9 +95,8 @@ fun RegisterScreen(controller:NavHostController) {
                         shape = CircleShape
                     )
             )
-            Spacer(modifier = Modifier.height(19.dp))
-            Spacer(modifier = Modifier.height(19.dp))
-            Spacer(modifier = Modifier.height(19.dp))
+            Spacer(modifier = Modifier.height(57.dp))
+
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -122,18 +113,24 @@ fun RegisterScreen(controller:NavHostController) {
 
                 OutlinedTextField(
                     value = email,
-                    label = { Text(text = "Enter Email Address") },
+                    label = { Text(text = "Enter Email Address",color = Color.Black) },
                     keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(8.dp),
                     onValueChange = {
                         email = it
-                    }
+                    },
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        textColor = Color.Black, // Set text color to black
+                        focusedBorderColor = Color.Blue, // Change border color when focused
+                        unfocusedBorderColor = Color.Gray, // Change border color when not focused
+                        cursorColor = Color.Black // Set cursor color to black
+                    )
                 )
             }
 
-            Spacer(modifier = Modifier.height(19.dp))
+            Spacer(modifier = Modifier.height(10.dp))
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -150,18 +147,25 @@ fun RegisterScreen(controller:NavHostController) {
 
                 OutlinedTextField(
                     value = pass,
-                    label = { Text(text = "Enter Password") },
+                    label = { Text(text = "Enter Password",color = Color.Black) },
                     keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(8.dp),
                     onValueChange = {
                         pass = it
-                    }
+                    },
+
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        textColor = Color.Black, // Set text color to black
+                        focusedBorderColor = Color.Blue, // Change border color when focused
+                        unfocusedBorderColor = Color.Gray, // Change border color when not focused
+                        cursorColor = Color.Black // Set cursor color to black
+                    )
                 )
             }
 
-            Spacer(modifier = Modifier.height(19.dp))
+            Spacer(modifier = Modifier.height(10.dp))
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -178,18 +182,25 @@ fun RegisterScreen(controller:NavHostController) {
 
                 OutlinedTextField(
                     value = confpass,
-                    label = { Text(text = "Confirm Password") },
+                    label = { Text(text = "Confirm Password ",color = Color.Black) },
                     keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(8.dp),
                     onValueChange = {
                         confpass = it
-                    }
+                    },
+
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        textColor = Color.Black, // Set text color to black
+                        focusedBorderColor = Color.Blue, // Change border color when focused
+                        unfocusedBorderColor = Color.Gray, // Change border color when not focused
+                        cursorColor = Color.Black // Set cursor color to black
+                    )
                 )
             }
 
-            Spacer(modifier = Modifier.height(19.dp))
+            Spacer(modifier = Modifier.height(10.dp))
 
             Button(
                 onClick = {
@@ -210,7 +221,7 @@ fun RegisterScreen(controller:NavHostController) {
 
             }
 
-            Spacer(modifier = Modifier.height(19.dp))
+            Spacer(modifier = Modifier.height(10.dp))
 
             Button(
                 onClick = {
@@ -230,7 +241,7 @@ fun RegisterScreen(controller:NavHostController) {
 
 
         }
-    }
+
 }
 @Preview
 @Composable

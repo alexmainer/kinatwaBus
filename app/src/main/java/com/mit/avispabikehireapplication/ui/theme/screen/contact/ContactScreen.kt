@@ -271,13 +271,7 @@ fun ContactScreen(controller: NavHostController) {
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            Text(
-                text = "Map and Directions",
-                color = Color(0xFF070707),
-                fontWeight = FontWeight.ExtraBold,
-                fontFamily = FontFamily.SansSerif,
-                fontSize = 15.sp
-            )
+
 
     }
 }

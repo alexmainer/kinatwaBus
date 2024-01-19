@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
@@ -39,7 +40,7 @@ import com.mit.avispabikehireapplication.ui.theme.screen.register.RegisterScreen
 @Composable
 fun IndexScreen(controller: NavHostController) {
     Column(
-        modifier = Modifier.fillMaxSize().background(Color.White),
+        modifier = Modifier.fillMaxSize().background(Color.White).padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         )
     {

@@ -19,14 +19,18 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.MailOutline
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -42,6 +46,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -59,14 +64,8 @@ import com.mit.avispabikehireapplication.navigation.ROUTE_REGISTER
 fun LoginScreen(controller:NavHostController) {
     var email by remember { mutableStateOf(TextFieldValue("")) }
     var pass by remember { mutableStateOf(TextFieldValue("")) }
-    val context= LocalContext.current
+    val context = LocalContext.current
 
-//    Image(
-//        painter = painterResource(id = R.drawable.bgg),
-//        contentDescription = null,
-//        modifier = Modifier.fillMaxSize(),
-//        contentScale = ContentScale.FillBounds
-//    )
 
     Column(
         modifier = Modifier
@@ -83,76 +82,80 @@ fun LoginScreen(controller:NavHostController) {
         )
         Spacer(modifier = Modifier.height(79.dp))
 
-
         Image(
-            painter = painterResource(id = R.drawable.ic),
+            painter = painterResource(id = R.drawable.log),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .size(150.dp)
+                .size(200.dp)
                 .clip(CircleShape)
                 .border(
                     width = 5.dp,
-                    color = Color.Black,
+                    color = Color.White,
                     shape = CircleShape
                 )
         )
 
         Spacer(modifier = Modifier.height(19.dp))
 
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(8.dp)
-        ) {
-            // Profile picture icon
-            Image(
-                imageVector = Icons.Default.MailOutline,
-                contentDescription = null, // You can add a content description here
-                modifier = Modifier.size(24.dp)
-            )
+        OutlinedTextField(
+            value = email,
+            label = { Text(text = "Enter Email Address",color = Color.Black) },
+            singleLine = true,
+            keyboardOptions = KeyboardOptions.Default.copy(
+                keyboardType = KeyboardType.Email,
+                imeAction = ImeAction.Next
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                //.background(MaterialTheme.colorScheme.background)
+                .padding(8.dp),
+            onValueChange = {
+                email = it
+            },
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                textColor = Color.Black, // Set text color to black
+                focusedBorderColor = Color.Yellow, // Change border color when focused
+                unfocusedBorderColor = Color.Gray, // Change border color when not focused
+                cursorColor = Color.Black // Set cursor color to black
+            ),
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Email,
+                    contentDescription = null,
+                    //tint = MaterialTheme.colorScheme.primary
+                )
+            }
+        )
 
-            Spacer(modifier = Modifier.width(4.dp))
-
-            OutlinedTextField(
-                value = email,
-                label = { Text(text = "Enter Email Address") },
-                keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp),
-                onValueChange = {
-                    email = it
-                }
-            )
-        }
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(8.dp)
-        ) {
-            // Profile picture icon
-            Image(
-                imageVector = Icons.Default.Lock,
-                contentDescription = null, // You can add a content description here
-                modifier = Modifier.size(24.dp)
-            )
+        OutlinedTextField(
+            value = pass,
+            label = { Text(text = "Enter Password",color = Color.Black) },
+            keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            onValueChange = {
+                pass = it
+            },
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                textColor = Color.Black, // Set text color to black
+                focusedBorderColor = Color.Blue, // Change border color when focused
+                unfocusedBorderColor = Color.Gray, // Change border color when not focused
+                cursorColor = Color.Black // Set cursor color to black
+            ),
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Email,
+                    contentDescription = null,
+                    //tint = MaterialTheme.colorScheme.primary
+                )
+            }
+        )
 
-            Spacer(modifier = Modifier.width(4.dp))
-
-            OutlinedTextField(
-                value = pass,
-                label = { Text(text = "Enter Password") },
-                keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp),
-                onValueChange = {
-                    pass = it
-                }
-            )
-        }
         Spacer(modifier = Modifier.height(10.dp))
 
         Button(
@@ -164,7 +167,7 @@ fun LoginScreen(controller:NavHostController) {
             colors = ButtonDefaults.buttonColors(Color.Black),
         )
         {
-            Text(text = "LogIn",color = Color.White)
+            Text(text = "LogIn", color = Color.White)
 
 
         }
@@ -190,8 +193,8 @@ fun LoginScreen(controller:NavHostController) {
         }
 
     }
-
 }
+
 
 @Preview
 @Composable

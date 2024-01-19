@@ -100,7 +100,6 @@ fun BookingScreen(controller: NavHostController) {
                 .padding(16.dp)
         )
 
-
         TextField(
             value = date,
             onValueChange = { date = it },
