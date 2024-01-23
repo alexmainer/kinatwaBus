@@ -1,7 +1,6 @@
 package com.mit.avispabikehireapplication.ui.theme.screen.register
 
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -20,11 +19,13 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.MailOutline
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -62,10 +63,22 @@ fun RegisterScreen(controller:NavHostController) {
     val context= LocalContext.current
 
 
-    Column(
+    Box (modifier = Modifier.fillMaxSize().background(Color.White))
+
+    {
+        Image(
+            painter = painterResource(id = R.drawable.gb),
+            contentDescription = null,
+            contentScale = ContentScale.FillBounds,
+            modifier= Modifier.matchParentSize()
+        )
+    }
+
+
+        Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color.White)
+                //.background(Color.White)
                 .verticalScroll(
                     rememberScrollState()
                 ),
@@ -74,131 +87,114 @@ fun RegisterScreen(controller:NavHostController) {
             )
         {
             Text(
-                text = "Register",
-                color = Color(0xFFFF9800),
-                fontFamily = FontFamily.Cursive,
+                text = "REGISTER",
+                color = Color(0xFFFFFFFF),
+                fontFamily = FontFamily.Monospace,
                 fontSize = 40.sp
             )
 
             Spacer(modifier = Modifier.height(10.dp))
 
             Image(
-                painter = painterResource(id = R.drawable.log),
+                painter = painterResource(id = R.drawable.prof),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .size(200.dp)
+                    .size(150.dp)
                     .clip(CircleShape)
                     .border(
-                        width = 5.dp,
-                        color = Color.Black,
+                        width = 3.dp,
+                        color = Color.White,
                         shape = CircleShape
                     )
             )
             Spacer(modifier = Modifier.height(57.dp))
 
 
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(8.dp)
-            ) {
-                // Profile picture icon
-                Image(
-                    imageVector = Icons.Default.MailOutline,
-                    contentDescription = null, // You can add a content description here
-                    modifier = Modifier.size(24.dp)
-                )
-
-                Spacer(modifier = Modifier.width(4.dp))
-
-                OutlinedTextField(
-                    value = email,
-                    label = { Text(text = "Enter Email Address",color = Color.Black) },
-                    keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp),
-                    onValueChange = {
-                        email = it
-                    },
-                    colors = TextFieldDefaults.outlinedTextFieldColors(
-                        textColor = Color.Black, // Set text color to black
-                        focusedBorderColor = Color.Blue, // Change border color when focused
-                        unfocusedBorderColor = Color.Gray, // Change border color when not focused
-                        cursorColor = Color.Black // Set cursor color to black
+            OutlinedTextField(
+                value = email,
+                label = { Text(text = "Enter Email Address", color = Color.White) },
+                keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                onValueChange = {
+                    email = it
+                },
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    textColor = Color.White, // Set text color to black
+                    focusedBorderColor = Color.White, // Change border color when focused
+                    unfocusedBorderColor = Color.Gray, // Change border color when not focused
+                    cursorColor = Color.White // Set cursor color to black
+                ),
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Email,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.background
                     )
-                )
-            }
+                }
+            )
+
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(8.dp)
-            ) {
-                // Profile picture icon
-                Image(
-                    imageVector = Icons.Default.Lock,
-                    contentDescription = null, // You can add a content description here
-                    modifier = Modifier.size(24.dp)
-                )
 
-                Spacer(modifier = Modifier.width(4.dp))
+            OutlinedTextField(
+                value = pass,
+                label = { Text(text = "Enter Password", color = Color.White) },
+                keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                onValueChange = {
+                    pass = it
+                },
 
-                OutlinedTextField(
-                    value = pass,
-                    label = { Text(text = "Enter Password",color = Color.Black) },
-                    keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp),
-                    onValueChange = {
-                        pass = it
-                    },
-
-                    colors = TextFieldDefaults.outlinedTextFieldColors(
-                        textColor = Color.Black, // Set text color to black
-                        focusedBorderColor = Color.Blue, // Change border color when focused
-                        unfocusedBorderColor = Color.Gray, // Change border color when not focused
-                        cursorColor = Color.Black // Set cursor color to black
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    textColor = Color.White, // Set text color to black
+                    focusedBorderColor = Color.White, // Change border color when focused
+                    unfocusedBorderColor = Color.Gray, // Change border color when not focused
+                    cursorColor = Color.White // Set cursor color to black
+                ),
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Lock,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.background
                     )
-                )
-            }
+                }
+            )
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(8.dp)
-            ) {
-                // Profile picture icon
-                Image(
-                    imageVector = Icons.Default.Lock,
-                    contentDescription = null, // You can add a content description here
-                    modifier = Modifier.size(24.dp)
-                )
 
-                Spacer(modifier = Modifier.width(4.dp))
+            OutlinedTextField(
+                value = confpass,
+                label = { Text(text = "Confirm Password ", color = Color.White) },
+                keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                onValueChange = {
+                    confpass = it
+                },
 
-                OutlinedTextField(
-                    value = confpass,
-                    label = { Text(text = "Confirm Password ",color = Color.Black) },
-                    keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp),
-                    onValueChange = {
-                        confpass = it
-                    },
-
-                    colors = TextFieldDefaults.outlinedTextFieldColors(
-                        textColor = Color.Black, // Set text color to black
-                        focusedBorderColor = Color.Blue, // Change border color when focused
-                        unfocusedBorderColor = Color.Gray, // Change border color when not focused
-                        cursorColor = Color.Black // Set cursor color to black
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    textColor = Color.White, // Set text color to black
+                    focusedBorderColor = Color.White, // Change border color when focused
+                    unfocusedBorderColor = Color.Gray, // Change border color when not focused
+                    cursorColor = Color.White // Set cursor color to black
+                ),
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Lock,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.background
                     )
-                )
-            }
+                }
+            )
+
 
             Spacer(modifier = Modifier.height(10.dp))
 
@@ -206,8 +202,8 @@ fun RegisterScreen(controller:NavHostController) {
                 onClick = {
 
                     val myregister = AuthViewModel(controller, context)
-                   // myregister.signup(email.text.trim(), pass.text.trim(), confpass.text.trim())
-                    myregister.signup(email.text.trim(),pass.text.trim(),confpass.text.trim())
+                    // myregister.signup(email.text.trim(), pass.text.trim(), confpass.text.trim())
+                    myregister.signup(email.text.trim(), pass.text.trim(), confpass.text.trim())
 
                 },
                 colors = ButtonDefaults.buttonColors(Color.Black),
@@ -227,22 +223,24 @@ fun RegisterScreen(controller:NavHostController) {
                 onClick = {
                     controller.navigate(ROUTE_LOGIN)
                 },
-                modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(Color.White)
+                //modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(Color.Transparent)
             )
             {
                 Text(
                     text = "Already have an account? Click to LogIn",
-                    color = Color(0xFFFF9800),
+                    color = Color(0xFFFFFFFF),
+                    fontSize = 17.sp
                 )
 
 
             }
-
-
         }
-
 }
+
+
+
+
 @Preview
 @Composable
 fun RegisterPreview() {
