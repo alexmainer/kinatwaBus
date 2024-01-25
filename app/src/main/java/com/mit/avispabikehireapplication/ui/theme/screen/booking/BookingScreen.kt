@@ -3,19 +3,37 @@ package com.mit.avispabikehireapplication.ui.theme.screen.booking
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -24,13 +42,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.mit.avispabikehireapplication.data.ProductViewModel
 import com.mit.avispabikehireapplication.navigation.ROUTE_DETAILS
+import org.w3c.dom.Text
 
 
 @RequiresApi(Build.VERSION_CODES.N)
@@ -38,6 +59,11 @@ import com.mit.avispabikehireapplication.navigation.ROUTE_DETAILS
 @Composable
 fun BookingScreen(controller: NavHostController) {
     val context= LocalContext.current
+    var expanded by remember { mutableStateOf(false) }
+
+    val typeOptions = listOf("kid Bike", "City Bikes", "Kid Bikes") // Add your specific options here
+    var selectedTypeIndex by remember { mutableIntStateOf(0) }
+    var selectedType by remember { mutableStateOf(typeOptions[0]) }
 
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -61,23 +87,56 @@ fun BookingScreen(controller: NavHostController) {
         var date by remember { mutableStateOf("") }
 
 
-
-        TextField(
+        OutlinedTextField(
             value = name,
-            onValueChange = { name = it },
-            label = { Text("Name") },
+            label = { Text(text = "Name", color = Color.Black) },
+            keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(8.dp),
+            onValueChange = {
+                name = it
+            },
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                textColor = Color.Black, // Set text color to black
+                focusedBorderColor = Color.Black, // Change border color when focused
+                unfocusedBorderColor = Color.Gray, // Change border color when not focused
+                cursorColor = Color.Black // Set cursor color to black
+            ),
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Person,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.surfaceTint
+                )
+            }
         )
 
-        TextField(
+
+
+        OutlinedTextField(
             value = idNumber,
-            onValueChange = { idNumber = it },
-            label = { Text("ID Number") },
+            label = { Text(text = "Id Number", color = Color.Black) },
+            keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(8.dp),
+            onValueChange = {
+                name = it
+            },
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                textColor = Color.Black, // Set text color to black
+                focusedBorderColor = Color.Black, // Change border color when focused
+                unfocusedBorderColor = Color.Gray, // Change border color when not focused
+                cursorColor = Color.Black // Set cursor color to black
+            ),
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Info,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.surfaceTint
+                )
+            }
         )
 
 
@@ -91,13 +150,29 @@ fun BookingScreen(controller: NavHostController) {
         )
 
 
-        TextField(
+        OutlinedTextField(
             value = quantity,
-            onValueChange = { quantity = it },
-            label = { Text("Quantity") },
+            label = { Text(text = "Quantity", color = Color.Black) },
+            keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(8.dp),
+            onValueChange = {
+                quantity = it
+            },
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                textColor = Color.Black, // Set text color to black
+                focusedBorderColor = Color.Black, // Change border color when focused
+                unfocusedBorderColor = Color.Gray, // Change border color when not focused
+                cursorColor = Color.Black // Set cursor color to black
+            ),
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.AddCircle,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.surfaceTint
+                )
+            }
         )
 
         TextField(
@@ -109,6 +184,7 @@ fun BookingScreen(controller: NavHostController) {
                 .padding(16.dp)
         )
 
+
         Spacer(modifier = Modifier.height(32.dp))
 
         Button(
@@ -119,6 +195,7 @@ fun BookingScreen(controller: NavHostController) {
                     name.trim(),
                     idNumber.trim(),
                     type.trim(),
+                    //typeOptions[selectedTypeIndex],
                     quantity.trim(),
                     date)
                 controller.navigate(ROUTE_DETAILS)
@@ -139,12 +216,7 @@ fun BookingScreen(controller: NavHostController) {
         }
     }
 
-
-
-
 }
-
-
 
 @RequiresApi(Build.VERSION_CODES.N)
 @Preview
