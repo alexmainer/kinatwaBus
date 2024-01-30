@@ -3,6 +3,7 @@ package com.mit.avispabikehireapplication.ui.theme.screen.booking
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -13,6 +14,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddCircle
@@ -32,6 +35,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -41,6 +45,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
@@ -51,19 +56,40 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.mit.avispabikehireapplication.data.ProductViewModel
 import com.mit.avispabikehireapplication.navigation.ROUTE_DETAILS
+import com.vanpra.composematerialdialogs.rememberMaterialDialogState
+import org.intellij.lang.annotations.JdkConstants.CalendarMonth
 import org.w3c.dom.Text
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.Calendar
 
 
-@RequiresApi(Build.VERSION_CODES.N)
+//@RequiresApi(Build.VERSION_CODES.N)
+
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BookingScreen(controller: NavHostController) {
+
+
     val context= LocalContext.current
     var expanded by remember { mutableStateOf(false) }
 
-    val typeOptions = listOf("kid Bike", "City Bikes", "Kid Bikes") // Add your specific options here
-    var selectedTypeIndex by remember { mutableIntStateOf(0) }
-    var selectedType by remember { mutableStateOf(typeOptions[0]) }
+    val bikeTypes = listOf("Mountain Bike", "City Bikes", "Kid Bikes") // Add your specific options here
+    var selectedBikeType by remember { mutableStateOf(bikeTypes[0]) }
+    val options by remember { mutableStateOf(bikeTypes) }
+    var selectedOption by remember { mutableStateOf(options[0]) }
+
+    //var selectedTypeIndex by remember { mutableIntStateOf(0) }
+    //var selectedType by remember { mutableStateOf(typeOptions[0]) }
+    //var pickedDate by remember { mutableStateOf(LocalDate.now())    }
+    //val formattedDate by remember { derivedStateOf { DateTimeFormatter.ofPattern("MM dd yyyy").format(pickedDate)}    }
+    //val dateDialogState = rememberMaterialDialogState()
+
+
+
+
+
 
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -82,7 +108,7 @@ fun BookingScreen(controller: NavHostController) {
         // Form
         var name by remember { mutableStateOf("") }
         var idNumber by remember { mutableStateOf("") }
-        var type by remember { mutableStateOf("") }
+        var selectedBikeType by remember { mutableStateOf("") }
         var quantity by remember { mutableStateOf("") }
         var date by remember { mutableStateOf("") }
 
@@ -122,7 +148,7 @@ fun BookingScreen(controller: NavHostController) {
                 .fillMaxWidth()
                 .padding(8.dp),
             onValueChange = {
-                name = it
+                idNumber = it
             },
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 textColor = Color.Black, // Set text color to black
@@ -140,13 +166,15 @@ fun BookingScreen(controller: NavHostController) {
         )
 
 
-        TextField(
-            value = type,
-            onValueChange = { type = it },
-            label = { Text("Type") },
+        OutlinedDropdown(
+            value = selectedBikeType,
+            onValueChange = { selectedBikeType = it },
+            options = bikeTypes,
+            label = { Text("Bike Type",color = Color.Black) },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(8.dp),
+
         )
 
 
@@ -183,6 +211,7 @@ fun BookingScreen(controller: NavHostController) {
                 .fillMaxWidth()
                 .padding(16.dp)
         )
+        
 
 
         Spacer(modifier = Modifier.height(32.dp))
@@ -194,8 +223,7 @@ fun BookingScreen(controller: NavHostController) {
                 productRepository.saveProduct(
                     name.trim(),
                     idNumber.trim(),
-                    type.trim(),
-                    //typeOptions[selectedTypeIndex],
+                    selectedBikeType.trim(),
                     quantity.trim(),
                     date)
                 controller.navigate(ROUTE_DETAILS)
@@ -218,7 +246,62 @@ fun BookingScreen(controller: NavHostController) {
 
 }
 
-@RequiresApi(Build.VERSION_CODES.N)
+@Composable
+fun OutlinedDropdown(
+    value: String,
+    onValueChange: (String) -> Unit,
+    options: List<String>,
+    label: @Composable () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    var expanded by remember { mutableStateOf(false) }
+    var selectedIndex by remember { mutableStateOf(0) }
+    var hasSelection by remember { mutableStateOf(false) }
+
+    Column(
+        modifier = modifier
+    ) {
+        BasicTextField(
+            value = if (hasSelection) options[selectedIndex] else "Type of Bike",
+            onValueChange = {},
+            textStyle = TextStyle(color = Color.Black),
+            readOnly = true,
+            decorationBox = { innerTextField ->
+                Box(
+                    contentAlignment = Alignment.CenterStart,
+                    modifier = Modifier
+                        .border(1.dp, Color.Gray)
+                        .padding(16.dp)
+                        .fillMaxWidth()
+                        .clickable { expanded = !expanded }
+                ) {
+                    innerTextField()
+                }
+            },
+        )
+
+        if (expanded) {
+            options.forEachIndexed { index, option ->
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            selectedIndex = index
+                            onValueChange(option)
+                            expanded = false
+                            hasSelection = true
+                        }
+                        .padding(8.dp)
+                ) {
+                    Text(text = option)
+                }
+            }
+        }
+    }
+}
+
+//@RequiresApi(Build.VERSION_CODES.N)
+@RequiresApi(Build.VERSION_CODES.O)
 @Preview
 @Composable
 fun BookingScreenPreview() {

@@ -62,7 +62,7 @@ fun DetailsScreen(controller: NavHostController) {
                    ProductItem(
                        name = it.name,
                        idNumber = it.idNumber,
-                       type = it.type,
+                       type = it.selectedBiketype,
                        quantity = it.quantity,
                        date = it.date,
                        id = it.id,

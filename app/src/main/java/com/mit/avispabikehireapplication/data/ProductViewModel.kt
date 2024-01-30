@@ -31,14 +31,14 @@ class ProductViewModel (var controller: NavHostController, var context: Context)
     fun saveProduct(
         name: String,
         idNumber: String,
-        type: String,
+        selectedBiketype: String,
         quantity: String,
         date: String,
 
         //text: Any?
     ) {
         var id = System.currentTimeMillis().toString()
-        var productData = Product(name, idNumber, type, quantity,date,id)
+        var productData = Product(name, idNumber, selectedBiketype, quantity,date,id)
         var productRef = FirebaseDatabase.getInstance().getReference()
             .child("Products/$id")
         progress.show()
