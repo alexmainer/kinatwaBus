@@ -42,14 +42,7 @@ fun KidBikesScreen(controller: NavHostController) {
             .verticalScroll(rememberScrollState()),
     )
     {
-//        Text(
-//            text = "KIDS BIKES",
-//
-//            color = Color(0xFFFF9800),
-//            modifier = Modifier.padding(16.dp),
-//            fontFamily = FontFamily.Serif,
-//            fontSize = 40.sp
-//        )
+
         Text(
             text = "KIDS BIKES",
             modifier = Modifier
@@ -78,7 +71,7 @@ fun KidBikesScreen(controller: NavHostController) {
                 .fillMaxWidth()
                 .padding(8.dp)
                 .background(Color.White) // Background color of the card
-                .clickable { /* Handle card click if needed */ }
+
         ) {
 
 
@@ -119,7 +112,7 @@ fun KidBikesScreen(controller: NavHostController) {
             )
             {
                 Text(
-                    text = " BOOK :)",
+                    text = " BOOK ",
                     color = Color.White
                 )
 

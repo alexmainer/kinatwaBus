@@ -1,5 +1,6 @@
 package com.mit.avispabikehireapplication.navigation
 
+import android.annotation.SuppressLint
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
@@ -22,11 +23,12 @@ import com.mit.avispabikehireapplication.ui.theme.screen.login.LoginScreen
 import com.mit.avispabikehireapplication.ui.theme.screen.mountainbikes.MountainBikesScreen
 import com.mit.avispabikehireapplication.ui.theme.screen.register.RegisterScreen
 
+@SuppressLint("NewApi")
 @RequiresApi(Build.VERSION_CODES.N)
 @Composable
 fun AppNavHost(
     controller: NavHostController = rememberNavController(),
-    startDestination: String = ROUTE_BOOKING
+    startDestination: String = ROUTE_HOME
 ){
 
     NavHost(navController = controller,modifier=Modifier, startDestination=startDestination ){

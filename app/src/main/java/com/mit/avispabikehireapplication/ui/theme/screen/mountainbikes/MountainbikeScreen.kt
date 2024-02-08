@@ -54,14 +54,7 @@ fun MountainBikesScreen(controller: NavHostController) {
             .verticalScroll(rememberScrollState()),
         )
     {
-//        Text(
-//            text = "MOUNTAIN BIKES",
-//
-//            color = Color(0xFFFF9800),
-//            modifier = Modifier.padding(16.dp),
-//            fontFamily = FontFamily.Serif,
-//            fontSize = 30.sp
-//        )
+
         Text(
             text = "MOUNTAIN BIKES",
             modifier = Modifier
@@ -91,7 +84,7 @@ fun MountainBikesScreen(controller: NavHostController) {
                 .fillMaxWidth()
                 .padding(8.dp)
                 .background(Color.White) // Background color of the card
-                .clickable { /* Handle card click if needed */ }
+
         ) {
 
 

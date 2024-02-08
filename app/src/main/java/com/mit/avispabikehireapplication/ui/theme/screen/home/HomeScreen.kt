@@ -123,15 +123,6 @@ fun HomeScreen(controller: NavHostController) {
             letterSpacing = 0.1.em,
             lineHeight = 50.sp
         )
-//        Text(
-//            text = "AVISPA BIKES",
-//            modifier=Modifier.padding(30.dp),
-//            color = Color(0xFFFF9800),
-//            textAlign = TextAlign.Center,
-//            fontFamily = FontFamily.Serif,
-//            fontWeight = FontWeight.ExtraBold,
-//            fontSize = 40.sp
-//        )
 
 
         HorizontalImageScroll(listOf(R.drawable.city2,R.drawable.m4,R.drawable.kid))
@@ -145,7 +136,7 @@ fun HomeScreen(controller: NavHostController) {
                 .fillMaxWidth()
                 .padding(8.dp)
                 .background(Color.White) // Background color of the card
-                .clickable { /* Handle card click if needed */ }
+                .clickable { controller.navigate(ROUTE_MOUNTAIN_BIKES)}
         ) {
 
             Text(
@@ -168,7 +159,7 @@ fun HomeScreen(controller: NavHostController) {
 
             Button(
                 onClick = {
-                    controller.navigate(ROUTE_MOUNTAIN_BIKES)
+                    //controller.navigate(ROUTE_MOUNTAIN_BIKES)
                 },
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(Color.Transparent)
@@ -191,7 +182,7 @@ fun HomeScreen(controller: NavHostController) {
                 .fillMaxWidth()
                 .padding(8.dp)
                 .background(Color.White) // Background color of the card
-                .clickable { /* Handle card click if needed */ }
+                .clickable { controller.navigate(ROUTE_CITY_BIKES) }
         ) {
 
             Text(
@@ -215,7 +206,7 @@ fun HomeScreen(controller: NavHostController) {
 
             Button(
                 onClick = {
-                    controller.navigate(ROUTE_CITY_BIKES)
+                    //controller.navigate(ROUTE_CITY_BIKES)
                 },
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(Color.Transparent)
@@ -237,7 +228,7 @@ fun HomeScreen(controller: NavHostController) {
                 .fillMaxWidth()
                 .padding(8.dp)
                 .background(Color.White) // Background color of the card
-                .clickable { /* Handle card click if needed */ }
+                .clickable { controller.navigate(ROUTE_KID_BIKES) }
         ) {
 
             Text(
@@ -260,7 +251,7 @@ fun HomeScreen(controller: NavHostController) {
 
             Button(
                 onClick = {
-                    controller.navigate(ROUTE_KID_BIKES)
+                    //controller.navigate(ROUTE_KID_BIKES)
                 },
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(Color.Transparent)

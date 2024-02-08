@@ -1,5 +1,6 @@
 package com.mit.avispabikehireapplication.ui.theme.screen.booking
 
+import android.app.DatePickerDialog
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
@@ -9,16 +10,19 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+//import androidx.compose.foundation.layout.FlowRowScopeInstance.align
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Person
@@ -32,6 +36,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -45,6 +50,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.ImeAction
@@ -54,14 +60,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.mit.avispabikehireapplication.R
 import com.mit.avispabikehireapplication.data.ProductViewModel
 import com.mit.avispabikehireapplication.navigation.ROUTE_DETAILS
 import com.vanpra.composematerialdialogs.rememberMaterialDialogState
 import org.intellij.lang.annotations.JdkConstants.CalendarMonth
 import org.w3c.dom.Text
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 
 //@RequiresApi(Build.VERSION_CODES.N)
@@ -110,6 +120,7 @@ fun BookingScreen(controller: NavHostController) {
         var idNumber by remember { mutableStateOf("") }
         var selectedBikeType by remember { mutableStateOf("") }
         var quantity by remember { mutableStateOf("") }
+        //var selectedDate by remember { mutableStateOf<Date?>(null) }
         var date by remember { mutableStateOf("") }
 
 
@@ -202,15 +213,28 @@ fun BookingScreen(controller: NavHostController) {
                 )
             }
         )
-
         TextField(
             value = date,
             onValueChange = { date = it },
             label = { Text("Date (DD/MM/YYYY)") },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(8.dp),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                textColor = Color.Black, // Set text color to black
+                focusedBorderColor = Color.Black, // Change border color when focused
+                unfocusedBorderColor = Color.Gray, // Change border color when not focused
+                cursorColor = Color.Black // Set cursor color to black
+            ),
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.DateRange,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.surfaceTint
+                )
+            }
         )
+
         
 
 
@@ -273,11 +297,19 @@ fun OutlinedDropdown(
                         .border(1.dp, Color.Gray)
                         .padding(16.dp)
                         .fillMaxWidth()
-                        .clickable { expanded = !expanded }
+                        .clickable { expanded = !expanded },
                 ) {
+                    Icon(
+                        imageVector = Icons.Default.DateRange,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.surfaceTint
+
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
                     innerTextField()
                 }
             },
+
         )
 
         if (expanded) {
@@ -300,7 +332,7 @@ fun OutlinedDropdown(
     }
 }
 
-//@RequiresApi(Build.VERSION_CODES.N)
+
 @RequiresApi(Build.VERSION_CODES.O)
 @Preview
 @Composable

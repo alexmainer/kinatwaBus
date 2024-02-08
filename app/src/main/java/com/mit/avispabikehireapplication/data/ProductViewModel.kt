@@ -12,6 +12,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.mit.avispabikehireapplication.model.Product
 import com.mit.avispabikehireapplication.navigation.ROUTE_LOGIN
+import java.util.Date
 
 class ProductViewModel (var controller: NavHostController, var context: Context) {
     var authRepository: AuthViewModel
@@ -38,6 +39,7 @@ class ProductViewModel (var controller: NavHostController, var context: Context)
         //text: Any?
     ) {
         var id = System.currentTimeMillis().toString()
+
         var productData = Product(name, idNumber, selectedBiketype, quantity,date,id)
         var productRef = FirebaseDatabase.getInstance().getReference()
             .child("Products/$id")

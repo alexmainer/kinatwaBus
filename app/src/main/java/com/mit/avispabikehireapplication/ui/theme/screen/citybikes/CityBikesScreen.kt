@@ -42,13 +42,6 @@ fun CityBikesScreen(controller: NavHostController) {
             .verticalScroll(rememberScrollState()),
     )
     {
-//        Text(
-//            text = "CITY BIKES",
-//            color = Color(0xFFFF9800),
-//            modifier = Modifier.padding(16.dp),
-//            fontFamily = FontFamily.Serif,
-//            fontSize = 40.sp
-//        )
         Text(
             text = "CITY BIKES",
             modifier = Modifier
@@ -78,7 +71,6 @@ fun CityBikesScreen(controller: NavHostController) {
                 .fillMaxWidth()
                 .padding(8.dp)
                 .background(Color.White) // Background color of the card
-                .clickable { /* Handle card click if needed */ }
         ) {
 
 
@@ -92,8 +84,7 @@ fun CityBikesScreen(controller: NavHostController) {
 
             Text(
                 text = "Explore the heart of the city on our sleek city bikes, designed for urban adventurers like you. Navigate bustling streets, discover hidden gems," +
-                        " and enjoy the freedom of a quick, convenient, and eco-friendly ride. With our city bikes for hire, embrace the urban pulse and effortlessly move " +
-                        "through the vibrant tapestry of city life.",
+                        " and enjoy the freedom of a quick, convenient, and eco-friendly ride. ",
                 modifier = Modifier.padding(16.dp),
                 color = Color(0xFFFFFFFF),
                 fontFamily = FontFamily.Serif,
@@ -120,7 +111,7 @@ fun CityBikesScreen(controller: NavHostController) {
             )
             {
                 Text(
-                    text = " BOOK :)",
+                    text = " BOOK ",
                     color = Color.White
                 )
 
