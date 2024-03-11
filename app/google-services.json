@@ -1,21 +1,22 @@
 {
   "project_info": {
-    "project_number": "147641483314",
-    "project_id": "avispabikehireapplication",
-    "storage_bucket": "avispabikehireapplication.appspot.com"
+    "project_number": "1025977459963",
+    "firebase_url": "https://kinatwabus-default-rtdb.firebaseio.com",
+    "project_id": "kinatwabus",
+    "storage_bucket": "kinatwabus.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:147641483314:android:852101e9a8c50e27acbc2b",
+        "mobilesdk_app_id": "1:1025977459963:android:76f4b1a9fac135eb0f7c5e",
         "android_client_info": {
-          "package_name": "com.mit.avispabikehireapplication"
+          "package_name": "com.mit.kinatwabusapplication"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAqTBXcvh6LaBGsTqbxYilEzGUDH7VZPu4"
+          "current_key": "AIzaSyABIatLzSbn3NAQ_sV0ZQP3JfNJQHrRlzM"
         }
       ],
       "services": {

@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.mit.avispabikehireapplication" />
-                  <option name="mobileSdkAppId" value="1:147641483314:android:852101e9a8c50e27acbc2b" />
-                  <option name="projectId" value="avispabikehireapplication" />
-                  <option name="projectNumber" value="147641483314" />
+                  <option name="appId" value="com.mit.kinatwabusapplication" />
+                  <option name="mobileSdkAppId" value="1:1025977459963:android:76f4b1a9fac135eb0f7c5e" />
+                  <option name="projectId" value="kinatwabus" />
+                  <option name="projectNumber" value="1025977459963" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
