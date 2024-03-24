@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Card
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -59,55 +60,63 @@ fun AboutScreen(controller: NavHostController) {
                 .fillMaxWidth()
                 .padding(vertical = 8.dp)
         ) {
-            Row(
+            Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 10.dp),
-                horizontalArrangement = Arrangement.End,
-                verticalAlignment = Alignment.CenterVertically
+                    .padding(8.dp)
+                    .background(Color.White) // Background color of the card
+                    .clickable { /* Handle card click if needed */ }
             ) {
-                // Add text for each screen in the navigation bar
-                Text(
-                    text = "HOME",
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF090808),
+                Row(
                     modifier = Modifier
-                        .padding(8.dp)
-                        .clickable {
-                            controller.navigate(ROUTE_HOME)
-                        }
-                )
+                        .fillMaxWidth()
+                        .padding(horizontal = 10.dp),
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    // Add text for each screen in the navigation bar
+                    Text(
+                        text = "HOME",
+                        fontWeight = FontWeight.Bold,
+                        color = Color(0xFF4CAF50),
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .clickable {
+                                controller.navigate(ROUTE_HOME)
+                            }
+                    )
 
-                Text(
-                    text = "ABOUT US",
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF020202),
+                    Text(
+                        text = "ABOUT US",
+                        fontWeight = FontWeight.Bold,
+                        color = Color(0xFF4CAF50),
 //                    style = MaterialTheme.typography.h6,
-                    modifier = Modifier
-                        .padding(4.dp)
-                        .clickable {
-                            controller.navigate(ROUTE_ABOUT)
-                        }
-                )
-                Text(
-                    text = "CONTACT US",
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF020202),
+                        modifier = Modifier
+                            .padding(4.dp)
+                            .clickable {
+                                controller.navigate(ROUTE_ABOUT)
+                            }
+                    )
+                    Text(
+                        text = "CONTACT US",
+                        fontWeight = FontWeight.Bold,
+                        color = Color(0xFF4CAF50),
 //                    style = MaterialTheme.typography.h6,
-                    modifier = Modifier
-                        .padding(4.dp)
-                        .clickable {
-                            controller.navigate(ROUTE_CONTACT_US)
-                        }
-                )
+                        modifier = Modifier
+                            .padding(4.dp)
+                            .clickable {
+                                controller.navigate(ROUTE_CONTACT_US)
+                            }
+                    )
 
-                // Add more text for other screens as needed
+                    // Add more text for other screens as needed
+                }
             }
         }
 
         Text(
             text = "ABOUT US",
-            color = Color(0xFFFF9800),
+            color = Color(0xFF4CAF50),
             fontFamily = FontFamily.SansSerif,
             fontSize = 40.sp,
             fontWeight = FontWeight.ExtraBold
@@ -116,24 +125,26 @@ fun AboutScreen(controller: NavHostController) {
         Spacer(modifier = Modifier.height(10.dp))
 
         Image(
-            painter = painterResource(id = R.drawable.la),
+            painter = painterResource(id = R.drawable.kin_logo),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .size(200.dp)
                 .clip(CircleShape)
                 .border(
-                    width = 5.dp,
-                    color = Color.Black,
-                    shape = CircleShape
-                )
+                width = 3.dp,
+                color = Color(0xFF4CAF50),
+                shape = CircleShape
+            )
         )
         Spacer(modifier = Modifier.height(30.dp))
 
 
         Text(
-            text = "Welcome to Avispa Bike Hire Company! We are passionate about providing exceptional bike rental services to enhance your cycling experience in the beautiful" +
-                    " landscapes of Wakanda. Our mission is to promote an active and sustainable lifestyle while exploring the wonders on two wheels.",
+            text = "Welcome to Kinatwa bus company . we strive to provide our customers with the best travel experience possible. We aim to make your \" +\n" +
+                    "\"journey hustle free and convenient, but we don’t stop there we also offer other valuable insights to help our esteemed customers\" +\n" +
+                    "\" informed with our operations. From real-time bus availability to detailed information about routes and fares we’ve got you covered.\" +\n" +
+                    " \" Let the journey begin!.",
             color = Color(0xFF070707),
             fontFamily = FontFamily.SansSerif,
             fontSize = 15.sp
@@ -142,14 +153,10 @@ fun AboutScreen(controller: NavHostController) {
 
 
         Text(
-            text = "Functions\n \n" +
-                    " 1. Quality Bike Rentals\n \n" +
-                    "At Avispa Bike Hire Company, we offer a wide range of meticulously maintained bicycles suitable for different preferences and riding styles." +
-                    " Whether you're into leisurely rides, mountain biking adventures, or road cycling escapades, we have the perfect bike for you.\n" +
-                    "\n" +
-                    " 2. Guided Tours and Routes\n\n" +
-                    "Discover the hidden gems of [Location] with our curated guided tours and recommended cycling routes. Our experienced team can provide insights, " +
-                    "safety tips, and local knowledge to make your cycling journey memorable and enjoyable.",
+            text = "Vision\n " +
+                    "We strive to be a go_to platform for bus travelers offering a comprehensive network of routes , reliable operators and competitive " +
+                    "prices . Through continuous innovation and customer centric approach , we envision a future where bus travel is not only convenient " +
+                    "but also eco_friendly , contributing to a connected world",
             color = Color(0xFF070707),
             fontFamily = FontFamily.SansSerif,
             fontSize = 15.sp
@@ -158,9 +165,9 @@ fun AboutScreen(controller: NavHostController) {
 
         Text(
             text = "Mission\n" +
-                    "Our mission at Avispa Bike Hire Company is to empower individuals to embrace an active lifestyle by providing access to high-quality bicycles and exceptional" +
-                    " cycling experiences. We believe in fostering a sense of adventure, promoting sustainable travel, and encouraging a strong connection with the environment " +
-                    "through cycling.",
+                    "Our mission is to revolutionalize bus booking and travelling by providing the best platform that is seamless and convenient to our " +
+                    "customers. We aim to offering exceptional customer service and user friendly experience not to mention ensuring that every journey " +
+                    "is comfortable and enjoyable",
             color = Color(0xFF070707),
             fontFamily = FontFamily.SansSerif,
             fontSize = 15.sp
@@ -168,20 +175,20 @@ fun AboutScreen(controller: NavHostController) {
 
         Spacer(modifier = Modifier.height(30.dp))
 
-        Text(
-            text = "Location\n" +
-                    "Avispa Bike Hire Company is nestled in the heart of [Wakanda], a region renowned for its stunning natural beauty and diverse cycling trails. " +
-                    "Our strategic location allows easy access scenic routes, varying in difficulty and terrain, ensuring there's a perfect ride for everyone," +
-                    " from beginners to avid cyclists.",
-            color = Color(0xFF070707),
-            fontFamily = FontFamily.SansSerif,
-            fontSize = 15.sp
-        )
-        Spacer(modifier = Modifier.height(10.dp))
+//        Text(
+//            text = "Location\n" +
+//                    "Avispa Bike Hire Company is nestled in the heart of [Wakanda], a region renowned for its stunning natural beauty and diverse cycling trails. " +
+//                    "Our strategic location allows easy access scenic routes, varying in difficulty and terrain, ensuring there's a perfect ride for everyone," +
+//                    " from beginners to avid cyclists.",
+//            color = Color(0xFF070707),
+//            fontFamily = FontFamily.SansSerif,
+//            fontSize = 15.sp
+//        )
+//        Spacer(modifier = Modifier.height(10.dp))
 
 
         Text(
-            text = "Ride with Avispa: Where Wheels Meet Wonders",
+            text = "Connecting Hearts,One Route at a Time",
             color = Color(0xFFCDDC39),
             fontFamily = FontFamily.SansSerif,
             fontSize = 15.sp

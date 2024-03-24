@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Card
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -61,52 +62,60 @@ fun ContactScreen(controller: NavHostController) {
                 .fillMaxWidth()
                 .padding(vertical = 8.dp)
         ) {
-            Row(
+            Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 10.dp),
-                horizontalArrangement = Arrangement.End,
-                verticalAlignment = Alignment.CenterVertically
+                    .padding(8.dp)
+                    .background(Color.White) // Background color of the card
+                    .clickable { /* Handle card click if needed */ }
             ) {
-                // Add text for each screen in the navigation bar
-                Text(
-                    text = "HOME",
-                    color = Color(0xFF090808),
+                Row(
                     modifier = Modifier
-                        .padding(8.dp)
-                        .clickable {
-                            controller.navigate(ROUTE_HOME)
-                        }
-                )
+                        .fillMaxWidth()
+                        .padding(horizontal = 10.dp),
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    // Add text for each screen in the navigation bar
+                    Text(
+                        text = "HOME",
+                        color = Color(0xFF4CAF50),
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .clickable {
+                                controller.navigate(ROUTE_HOME)
+                            }
+                    )
 
-                Text(
-                    text = "ABOUT US",
-                    color = Color(0xFF020202),
+                    Text(
+                        text = "ABOUT US",
+                        color = Color(0xFF4CAF50),
 //                    style = MaterialTheme.typography.h6,
-                    modifier = Modifier
-                        .padding(4.dp)
-                        .clickable {
-                            controller.navigate(ROUTE_ABOUT)
-                        }
-                )
-                Text(
-                    text = "CONTACT US",
-                    color = Color(0xFF020202),
+                        modifier = Modifier
+                            .padding(4.dp)
+                            .clickable {
+                                controller.navigate(ROUTE_ABOUT)
+                            }
+                    )
+                    Text(
+                        text = "CONTACT US",
+                        color = Color(0xFF4CAF50),
 //                    style = MaterialTheme.typography.h6,
-                    modifier = Modifier
-                        .padding(4.dp)
-                        .clickable {
-                            controller.navigate(ROUTE_CONTACT_US)
-                        }
-                )
+                        modifier = Modifier
+                            .padding(4.dp)
+                            .clickable {
+                                controller.navigate(ROUTE_CONTACT_US)
+                            }
+                    )
 
-                // Add more text for other screens as needed
+                    // Add more text for other screens as needed
+                }
             }
         }
 
         Text(
             text = "CONTACT US",
-            color = Color(0xFFFF9800),
+            color = Color(0xFF4CAF50),
             fontFamily = FontFamily.SansSerif,
             fontSize = 40.sp,
             fontWeight = FontWeight.ExtraBold
@@ -115,7 +124,7 @@ fun ContactScreen(controller: NavHostController) {
         Spacer(modifier = Modifier.height(10.dp))
 
         Image(
-            painter = painterResource(id = R.drawable.la),
+            painter = painterResource(id = R.drawable.kin_logo),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -140,7 +149,7 @@ fun ContactScreen(controller: NavHostController) {
 
         Text(
             text = "Contact Information",
-            color = Color(0xFF070707),
+            color = Color(0xFF4CAF50),
             fontWeight = FontWeight.ExtraBold,
             fontFamily = FontFamily.SansSerif,
             fontSize = 15.sp
@@ -149,13 +158,13 @@ fun ContactScreen(controller: NavHostController) {
 
         Text(
             text = "Physical Address:\n" +
-                    " Tchalla Street, Suite 101, Kalakuta, \n" +
+                    " Tom Mboya street , Philadelphia house , Nairobi, \n" +
                     "\n" +
                     "Phone Number:\n" +
-                    "+254-715-789-670\n" +
+                    "+254 714 281 364\n" +
                     "\n" +
                     "Email Address:\n" +
-                    "info@avispabikehire.com",
+                    " Kinatwaexpress77@gmail.com",
             color = Color(0xFF070707),
             fontWeight = FontWeight.ExtraBold,
             fontFamily = FontFamily.SansSerif,
@@ -166,7 +175,7 @@ fun ContactScreen(controller: NavHostController) {
 
             Text(
                 text = "Social Media",
-                color = Color(0xFF070707),
+                color = Color(0xFF4CAF50),
                 fontWeight = FontWeight.ExtraBold,
                 fontFamily = FontFamily.SansSerif,
                 fontSize = 15.sp
@@ -248,11 +257,7 @@ fun ContactScreen(controller: NavHostController) {
             Spacer(modifier = Modifier.height(10.dp))
 
             Text(
-                text = "Monday to Friday:\n" +
-                        "9:00 AM - 6:00 PM\n" +
-                        "\n" +
-                        "Saturday and Sunday:\n" +
-                        "10:00 AM - 4:00 PM",
+                text = "7:00 a.m _ 11:00 p.m everyday ",
                 color = Color(0xFF070707),
                 fontFamily = FontFamily.SansSerif,
                 fontSize = 15.sp

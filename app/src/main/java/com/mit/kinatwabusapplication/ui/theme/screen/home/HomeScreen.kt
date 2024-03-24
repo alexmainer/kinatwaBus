@@ -103,7 +103,7 @@ fun HomeScreen(controller: NavHostController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            color = Color(0xFFFF9800),
+            color = Color(0xFF4CAF50),
             textAlign = TextAlign.Center,
             fontFamily = FontFamily.Serif,
             fontWeight = FontWeight.ExtraBold,
@@ -113,7 +113,7 @@ fun HomeScreen(controller: NavHostController) {
         )
 
 
-        HorizontalImageScroll(listOf(R.drawable.city2,R.drawable.m4,R.drawable.kid))
+        HorizontalImageScroll(listOf(R.drawable.mat))
 
 
 
@@ -130,7 +130,7 @@ fun HomeScreen(controller: NavHostController) {
             Text(
                 text = "MOMBASA TERMINAL ",
                 modifier = Modifier.padding(16.dp),
-                color = Color(0xFFFF9800),
+                color = Color(0xFF4CAF50),
                 fontFamily = FontFamily.Serif,
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp
@@ -151,15 +151,15 @@ fun HomeScreen(controller: NavHostController) {
 
             Button(
                 onClick = {
-                    //controller.navigate(ROUTE_MOUNTAIN_BIKES)
+
                 },
                 modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(Color.Transparent)
+                colors = ButtonDefaults.buttonColors(Color(0xFF4CAF50))
             )
             {
                 Text(
-                    text = "View Routes",
-                    color = Color(0xFFFF9800),
+                    text = "more details",
+                    color = Color(0xFFFFFFFF),
                     fontWeight = FontWeight.Bold
 
                 )
@@ -180,7 +180,7 @@ fun HomeScreen(controller: NavHostController) {
             Text(
                 text = "NAIROBI TERMINAL ",
                 modifier = Modifier.padding(16.dp),
-                color = Color(0xFFFF9800),
+                color = Color(0xFF4CAF50),
                 fontFamily = FontFamily.Serif,
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp
@@ -205,13 +205,13 @@ fun HomeScreen(controller: NavHostController) {
                     //controller.navigate(ROUTE_CITY_BIKES)
                 },
                 modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(Color.Transparent)
+                colors = ButtonDefaults.buttonColors(Color(0xFF4CAF50))
             )
             {
                 Text(
-                    text = "View Routes",
+                    text = "more details",
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFFFF9800),
+                    color = Color(0xFFFFFFFF),
                 )
 
             }
@@ -219,48 +219,6 @@ fun HomeScreen(controller: NavHostController) {
 
         Spacer(modifier = Modifier.height(4.dp))
 
-//        Card(
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .padding(8.dp)
-//                .background(Color.White) // Background color of the card
-//                .clickable { controller.navigate(ROUTE_KID_BIKES) }
-//        ) {
-
-//            Text(
-//                text = "KIDS BIKES ",
-//                modifier = Modifier.padding(16.dp),
-//                color = Color(0xFFFF9800),
-//                fontFamily = FontFamily.Serif,
-//                fontWeight = FontWeight.Bold,
-//                fontSize = 20.sp
-//            )
-//
-//            Text(
-//                text = "Introduce your little ones to the joy of cycling with our specially designed kid bikes for hire. Engineered with safety and fun in mind, our kid bikes" +
-//                        " allow young riders to embark on exciting adventures. Watch their confidence grow as they pedal through parks, neighborhoods, and beyond",
-//                modifier = Modifier.padding(8.dp),
-//                color = Color(0xFFFFFFFF),
-//                fontFamily = FontFamily.Serif,
-//                fontSize = 15.sp
-//            )
-//
-//            Button(
-//                onClick = {
-//                    //controller.navigate(ROUTE_KID_BIKES)
-//                },
-//                modifier = Modifier.fillMaxWidth(),
-//                colors = ButtonDefaults.buttonColors(Color.Transparent)
-//            )
-//            {
-//                Text(
-//                    text = "View Bikes",
-//                    fontWeight = FontWeight.Bold,
-//                    color = Color(0xFFFF9800),
-//                )
-//
-//            }
-//        }
 
         Text(
             text = "Connecting Hearts, One Route at a Time",
@@ -279,7 +237,7 @@ fun HomeScreen(controller: NavHostController) {
 private fun NavigationItem(text: String, route: String, controller: NavHostController) {
     Text(
         text = text,
-        color = Color(0xFFFFFFFF),
+        color = Color(0xFF4CAF50),
         fontWeight = FontWeight.Bold,
         modifier = Modifier
             .padding(10.dp)

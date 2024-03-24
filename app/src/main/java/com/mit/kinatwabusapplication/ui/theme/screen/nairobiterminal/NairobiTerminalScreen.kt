@@ -45,7 +45,7 @@ fun CityBikesScreen(controller: NavHostController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            color = Color(0xFFFF9800),
+            color = Color(0xFF4CAF50),
             textAlign = TextAlign.Center,
             fontFamily = FontFamily.Serif,
             fontWeight = FontWeight.ExtraBold,
@@ -58,9 +58,8 @@ fun CityBikesScreen(controller: NavHostController) {
 
         HorizontalImageScroll(
             listOf(
-                R.drawable.city2,
-                R.drawable.city1,
-                R.drawable.city
+                R.drawable.mat,
+                R.drawable.mat_i,
             )
         )
 
@@ -75,7 +74,7 @@ fun CityBikesScreen(controller: NavHostController) {
             Text(
                 text = "From Nairobi to voi  ",
                 modifier = Modifier.padding(16.dp),
-                color = Color(0xFFFF9800),
+                color = Color(0xFF4CAF50),
                 fontFamily = FontFamily.Serif,
                 fontSize = 20.sp
             )
@@ -95,7 +94,7 @@ fun CityBikesScreen(controller: NavHostController) {
                     controller.navigate(ROUTE_BOOKING)
 
                 },
-                colors = ButtonDefaults.buttonColors(Color.Black),
+                colors = ButtonDefaults.buttonColors(Color(0xFF4CAF50)),
                 modifier = Modifier.padding(30.dp)
 
             )
@@ -119,7 +118,7 @@ fun CityBikesScreen(controller: NavHostController) {
             Text(
                 text = "From Nairobi to Kitui ",
                 modifier = Modifier.padding(16.dp),
-                color = Color(0xFFFF9800),
+                color = Color(0xFF4CAF50),
                 fontFamily = FontFamily.Serif,
                 fontSize = 20.sp
             )
@@ -139,7 +138,7 @@ fun CityBikesScreen(controller: NavHostController) {
                     controller.navigate(ROUTE_BOOKING)
 
                 },
-                colors = ButtonDefaults.buttonColors(Color.Black),
+                colors = ButtonDefaults.buttonColors(Color(0xFF4CAF50)),
                 modifier = Modifier.padding(30.dp)
 
             )
@@ -163,7 +162,7 @@ fun CityBikesScreen(controller: NavHostController) {
             Text(
                 text = "From Nairobi to voi  ",
                 modifier = Modifier.padding(16.dp),
-                color = Color(0xFFFF9800),
+                color = Color(0xFF4CAF50),
                 fontFamily = FontFamily.Serif,
                 fontSize = 20.sp
             )
@@ -183,7 +182,7 @@ fun CityBikesScreen(controller: NavHostController) {
                     controller.navigate(ROUTE_BOOKING)
 
                 },
-                colors = ButtonDefaults.buttonColors(Color.Black),
+                colors = ButtonDefaults.buttonColors(Color(0xFF4CAF50)),
                 modifier = Modifier.padding(30.dp)
 
             )
@@ -207,7 +206,7 @@ fun CityBikesScreen(controller: NavHostController) {
             Text(
                 text = "From Nairobi to Mwingi ",
                 modifier = Modifier.padding(16.dp),
-                color = Color(0xFFFF9800),
+                color = Color(0xFF4CAF50),
                 fontFamily = FontFamily.Serif,
                 fontSize = 20.sp
             )
@@ -227,7 +226,7 @@ fun CityBikesScreen(controller: NavHostController) {
                     controller.navigate(ROUTE_BOOKING)
 
                 },
-                colors = ButtonDefaults.buttonColors(Color.Black),
+                colors = ButtonDefaults.buttonColors(Color(0xFF4CAF50)),
                 modifier = Modifier.padding(30.dp)
 
             )
@@ -251,7 +250,7 @@ fun CityBikesScreen(controller: NavHostController) {
             Text(
                 text = "From Nairobi to Machakos   ",
                 modifier = Modifier.padding(16.dp),
-                color = Color(0xFFFF9800),
+                color = Color(0xFF4CAF50),
                 fontFamily = FontFamily.Serif,
                 fontSize = 20.sp
             )
@@ -271,7 +270,7 @@ fun CityBikesScreen(controller: NavHostController) {
                     controller.navigate(ROUTE_BOOKING)
 
                 },
-                colors = ButtonDefaults.buttonColors(Color.Black),
+                colors = ButtonDefaults.buttonColors(Color(0xFF4CAF50)),
                 modifier = Modifier.padding(30.dp)
 
             )

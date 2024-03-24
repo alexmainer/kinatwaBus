@@ -97,7 +97,7 @@ fun CustomDatePicker(
         colors = ButtonDefaults.outlinedButtonColors(
             contentColor = Color.Black,
         ),
-        border = BorderStroke(0.5.dp, Color.Black),
+        border = BorderStroke(0.5.dp, Color.Gray),
         contentPadding = PaddingValues(8.dp)
     ) {
         Row(
@@ -105,7 +105,7 @@ fun CustomDatePicker(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                tint = MaterialTheme.colorScheme.surfaceTint,
+                tint = MaterialTheme.colorScheme.background,
                 imageVector = Icons.Default.DateRange,
                 contentDescription = null,
                 modifier = Modifier.size(24.dp)
@@ -135,9 +135,10 @@ fun BookingScreen(controller: NavHostController) {
     val context= LocalContext.current
     var expanded by remember { mutableStateOf(false) }
 
-    val bikeTypes = listOf("Nairobi to voi ", "Nairobi to Kitui", "Nairobi to Mwingi","Nairobi to Machakos ","Nairobi to Wote") // Add your specific options here
-    var selectedBikeType by remember { mutableStateOf(bikeTypes[0]) }
-    val options by remember { mutableStateOf(bikeTypes) }
+    val busroutes = listOf("Nairobi to voi ", "Nairobi to Kitui", "Nairobi to Mwingi","Nairobi to Machakos ","Nairobi to Wote","From Mombasa to Nairobi ","From Mombasa to voi",
+        "From Mombasa to Kitui","From Mombasa to Mwingi","From Mombasa to Machakos","From Mombasa to Wote ",) // Add your specific options here
+    var selectedbusroute by remember { mutableStateOf(busroutes[0]) }
+    val options by remember { mutableStateOf(busroutes) }
     var selectedOption by remember { mutableStateOf(options[0]) }
 
     var selectedTypeIndex by remember { mutableIntStateOf(0) }
@@ -159,7 +160,7 @@ fun BookingScreen(controller: NavHostController) {
     {
         Text(
             text = "BOOKING",
-            color = Color(0xFFFF9800),
+            color = Color(0xFF4CAF50),
             modifier = Modifier.padding(16.dp),
             fontFamily = FontFamily.Serif,
             fontSize = 40.sp
@@ -169,7 +170,7 @@ fun BookingScreen(controller: NavHostController) {
         // Form
         var name by remember { mutableStateOf("") }
         var idNumber by remember { mutableStateOf("") }
-        var selectedBikeType by remember { mutableStateOf("") }
+        var selectedbusroute by remember { mutableStateOf("") }
         var quantity by remember { mutableStateOf("") }
         //var selectedDate by remember { mutableStateOf<Date?>(null) }
         var date by remember { mutableStateOf("") }
@@ -177,7 +178,7 @@ fun BookingScreen(controller: NavHostController) {
 
         OutlinedTextField(
             value = name,
-            label = { Text(text = "Name", color = Color.Black) },
+            label = { Text(text = "Name", color = Color(0xFF4CAF50)) },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
             modifier = Modifier
                 .fillMaxWidth()
@@ -189,13 +190,13 @@ fun BookingScreen(controller: NavHostController) {
                 textColor = Color.Black, // Set text color to black
                 focusedBorderColor = Color.Black, // Change border color when focused
                 unfocusedBorderColor = Color.Gray, // Change border color when not focused
-                cursorColor = Color.Black // Set cursor color to black
+                cursorColor = Color(0xFF4CAF50) // Set cursor color to black
             ),
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Person,
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.surfaceTint
+                    tint = MaterialTheme.colorScheme.background
                 )
             }
         )
@@ -204,7 +205,7 @@ fun BookingScreen(controller: NavHostController) {
 
         OutlinedTextField(
             value = idNumber,
-            label = { Text(text = "Id Number", color = Color.Black) },
+            label = { Text(text = "Id Number", color = Color(0xFF4CAF50)) },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
             modifier = Modifier
                 .fillMaxWidth()
@@ -216,23 +217,23 @@ fun BookingScreen(controller: NavHostController) {
                 textColor = Color.Black, // Set text color to black
                 focusedBorderColor = Color.Black, // Change border color when focused
                 unfocusedBorderColor = Color.Gray, // Change border color when not focused
-                cursorColor = Color.Black // Set cursor color to black
+                cursorColor = Color(0xFF4CAF50) // Set cursor color to black
             ),
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Info,
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.surfaceTint
+                    tint = MaterialTheme.colorScheme.background
                 )
             }
         )
 
 
         OutlinedDropdown(
-            value = selectedBikeType,
-            onValueChange = { selectedBikeType = it },
-            options = bikeTypes,
-            label = { Text("Bike Type",color = Color.Black) },
+            value = selectedbusroute,
+            onValueChange = { selectedbusroute = it },
+            options = busroutes,
+            label = { Text("Routes",color = Color(0xFF4CAF50)) },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp),
@@ -242,7 +243,7 @@ fun BookingScreen(controller: NavHostController) {
 
         OutlinedTextField(
             value = quantity,
-            label = { Text(text = "Quantity", color = Color.Black) },
+            label = { Text(text = "Tickets", color =Color(0xFF4CAF50)) },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
             modifier = Modifier
                 .fillMaxWidth()
@@ -254,13 +255,13 @@ fun BookingScreen(controller: NavHostController) {
                 textColor = Color.Black, // Set text color to black
                 focusedBorderColor = Color.Black, // Change border color when focused
                 unfocusedBorderColor = Color.Gray, // Change border color when not focused
-                cursorColor = Color.Black // Set cursor color to black
+                cursorColor = Color(0xFF4CAF50) // Set cursor color to black
             ),
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.AddCircle,
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.surfaceTint
+                    tint = MaterialTheme.colorScheme.background
                 )
             }
         )
@@ -280,17 +281,17 @@ fun BookingScreen(controller: NavHostController) {
                 productRepository.saveProduct(
                     name.trim(),
                     idNumber.trim(),
-                    selectedBikeType.trim(),
+                    selectedbusroute.trim(),
                     quantity.trim(),
                     selectedDate?.formatToDisplayDate() ?: ""
                 )
-                controller.navigate(ROUTE_DETAILS)
+                        controller.navigate(ROUTE_DETAILS)
 
 
             },
             modifier = Modifier
                 .padding(16.dp),
-            colors = ButtonDefaults.buttonColors(Color.Black),
+            colors = ButtonDefaults.buttonColors(Color(0xFF4CAF50)),
         )
         {
             Text(
@@ -320,7 +321,7 @@ fun OutlinedDropdown(
         modifier = modifier
     ) {
         BasicTextField(
-            value = if (hasSelection) options[selectedIndex] else "Type of Bike",
+            value = if (hasSelection) options[selectedIndex] else "Routes",
             onValueChange = {},
             textStyle = TextStyle(color = Color.Black),
             readOnly = true,
@@ -359,7 +360,7 @@ fun OutlinedDropdown(
                         }
                         .padding(8.dp)
                 ) {
-                    Text(text = option)
+                    Text(text = option, color = Color(0xFF4CAF50))
                 }
             }
         }

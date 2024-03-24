@@ -47,7 +47,7 @@ fun MountainBikesScreen(controller: NavHostController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            color = Color(0xFFFF9800),
+            color = Color(0xFF4CAF50),
             textAlign = TextAlign.Center,
             fontFamily = FontFamily.Serif,
             fontWeight = FontWeight.ExtraBold,
@@ -60,8 +60,8 @@ fun MountainBikesScreen(controller: NavHostController) {
 
         HorizontalImageScroll(
             listOf(
-                R.drawable.m1,
-                R.drawable.m4,
+                R.drawable.mat_n,
+                R.drawable.mat_i,
 
             )
         )
@@ -78,7 +78,7 @@ fun MountainBikesScreen(controller: NavHostController) {
             Text(
                 text = "From Mombasa to Nairobi   ",
                 modifier = Modifier.padding(16.dp),
-                color = Color(0xFFFF9800),
+                color = Color(0xFF4CAF50),
                 fontFamily = FontFamily.Serif,
                 fontSize = 20.sp
             )
@@ -98,7 +98,7 @@ fun MountainBikesScreen(controller: NavHostController) {
 
                 },
                 modifier = Modifier.padding(30.dp),
-                colors = ButtonDefaults.buttonColors(Color.Black),
+                colors = ButtonDefaults.buttonColors(Color(0xFF4CAF50)),
             )
             {
                 Text(
@@ -122,7 +122,7 @@ fun MountainBikesScreen(controller: NavHostController) {
             Text(
                 text = "From Mombasa to voi",
                 modifier = Modifier.padding(16.dp),
-                color = Color(0xFFFF9800),
+                color = Color(0xFF4CAF50),
                 fontFamily = FontFamily.Serif,
                 fontSize = 20.sp
             )
@@ -142,12 +142,12 @@ fun MountainBikesScreen(controller: NavHostController) {
 
                 },
                 modifier = Modifier.padding(30.dp),
-                colors = ButtonDefaults.buttonColors(Color.Black),
+                colors = ButtonDefaults.buttonColors(Color(0xFF4CAF50)),
             )
             {
                 Text(
                     text = " BOOK :)",
-                    color = Color.White
+                    color = Color(0xFFFFFFFF)
                 )
 
 
@@ -166,7 +166,7 @@ fun MountainBikesScreen(controller: NavHostController) {
             Text(
                 text = "From Mombasa to Kitui",
                 modifier = Modifier.padding(16.dp),
-                color = Color(0xFFFF9800),
+                color = Color(0xFF4CAF50),
                 fontFamily = FontFamily.Serif,
                 fontSize = 20.sp
             )
@@ -186,7 +186,7 @@ fun MountainBikesScreen(controller: NavHostController) {
 
                 },
                 modifier = Modifier.padding(30.dp),
-                colors = ButtonDefaults.buttonColors(Color.Black),
+                colors = ButtonDefaults.buttonColors(Color(0xFF4CAF50)),
             )
             {
                 Text(
@@ -210,7 +210,7 @@ fun MountainBikesScreen(controller: NavHostController) {
             Text(
                 text = "From Mombasa to Mwingi",
                 modifier = Modifier.padding(16.dp),
-                color = Color(0xFFFF9800),
+                color = Color(0xFF4CAF50),
                 fontFamily = FontFamily.Serif,
                 fontSize = 20.sp
             )
@@ -231,7 +231,7 @@ fun MountainBikesScreen(controller: NavHostController) {
 
                 },
                 modifier = Modifier.padding(30.dp),
-                colors = ButtonDefaults.buttonColors(Color.Black),
+                colors = ButtonDefaults.buttonColors(Color(0xFF4CAF50)),
             )
             {
                 Text(
@@ -255,7 +255,7 @@ fun MountainBikesScreen(controller: NavHostController) {
             Text(
                 text = "From Mombasa to Machakos",
                 modifier = Modifier.padding(16.dp),
-                color = Color(0xFFFF9800),
+                color = Color(0xFF4CAF50),
                 fontFamily = FontFamily.Serif,
                 fontSize = 20.sp
             )
@@ -275,7 +275,7 @@ fun MountainBikesScreen(controller: NavHostController) {
 
                 },
                 modifier = Modifier.padding(30.dp),
-                colors = ButtonDefaults.buttonColors(Color.Black),
+                colors = ButtonDefaults.buttonColors(Color(0xFF4CAF50)),
             )
             {
                 Text(
@@ -299,7 +299,7 @@ fun MountainBikesScreen(controller: NavHostController) {
             Text(
                 text = "From Mombasa to Wote ",
                 modifier = Modifier.padding(16.dp),
-                color = Color(0xFFFF9800),
+                color = Color(0xFF4CAF50),
                 fontFamily = FontFamily.Serif,
                 fontSize = 20.sp
             )
@@ -319,7 +319,7 @@ fun MountainBikesScreen(controller: NavHostController) {
 
                 },
                 modifier = Modifier.padding(30.dp),
-                colors = ButtonDefaults.buttonColors(Color.Black),
+                colors = ButtonDefaults.buttonColors(Color(0xFF4CAF50)),
             )
             {
                 Text(

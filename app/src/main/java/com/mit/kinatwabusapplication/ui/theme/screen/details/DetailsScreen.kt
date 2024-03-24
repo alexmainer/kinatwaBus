@@ -12,9 +12,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -33,32 +35,23 @@ import com.mit.kinatwabusapplication.model.Product
 
 @Composable
 fun DetailsScreen(controller: NavHostController) {
-
-    Column(modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally) {
-
+    Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
         var context = LocalContext.current
         var productRepository = ProductViewModel(controller, context)
 
-        val emptyProductState = remember { mutableStateOf(Product("","","","","","")) }
+        val emptyProductState = remember { mutableStateOf(Product("", "", "", "", "", "")) }
         var emptyProductsListState = remember { mutableStateListOf<Product>() }
 
         var products = productRepository.viewProducts(emptyProductState, emptyProductsListState)
 
-
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color.White)
-            ,
+            modifier = Modifier.fillMaxSize().background(Color.White),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "BOOKING SUCCESSFUL !!",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp),
-                color = Color(0xFFFF9800),
+                text = "RECEIPT",
+                modifier = Modifier.fillMaxWidth().padding(8.dp),
+                color = Color(0xFF4CAF50),
                 textAlign = TextAlign.Center,
                 fontFamily = FontFamily.Serif,
                 fontWeight = FontWeight.ExtraBold,
@@ -67,95 +60,68 @@ fun DetailsScreen(controller: NavHostController) {
                 lineHeight = 50.sp
             )
 
-            //Spacer(modifier = Modifier.height(20.dp))
-
-           LazyColumn(
-           ){
-               items(products){
-                       ProductItem(
-                           name = it.name,
-                           idNumber = it.idNumber,
-                           type = it.selectedBiketype,
-                           quantity = it.quantity,
-                           date = it.date,
-                           id = it.id,
-                           controller = controller ,
-                           productRepository = productRepository
-                       )
-                   }
-
-               }
-
+            LazyColumn {
+                items(products) { product ->
+                    ProductItem(
+                        name = product.name,
+                        idNumber = product.idNumber,
+                        type = product.selectedbusroute,
+                        tickets = product.tickets,
+                        date = product.date,
+                        id = product.id,
+                        controller = controller,
+                        productRepository = productRepository
+                    )
+                }
             }
         }
     }
-
+}
 
 @SuppressLint("SimpleDateFormat")
 @Composable
-fun ProductItem(name:String,
-                idNumber:String,
-                type:String,
-                quantity:String,
-                date:String,
-                id:String,
-                controller:NavHostController,
-                productRepository:ProductViewModel) {
+fun ProductItem(
+    name: String,
+    idNumber: String,
+    type: String,
+    tickets: String,
+    date: String,
+    id: String,
+    controller: NavHostController,
+    productRepository: ProductViewModel
+) {
+    var isDetailsVisible by remember { mutableStateOf(false) }
 
     Column(modifier = Modifier.fillMaxWidth()) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
-                .background(Color.White) // Background color of the card
-                .clickable { /* Handle card click if needed */ }
+                .background(Color.White)
+                .clickable { isDetailsVisible = !isDetailsVisible }
         ) {
-            Text(text = name,
+            Text(
+                text = name,
                 modifier = Modifier.padding(8.dp),
-                color = Color(0xFFFFFFFF),
+                color = Color(0xFF4CAF50),
                 fontFamily = FontFamily.Serif,
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp
             )
-            Text(text = idNumber,
-                modifier = Modifier.padding(8.dp),
-                color = Color(0xFFFFFFFF),
-                fontFamily = FontFamily.Serif,
-                fontWeight = FontWeight.Bold,
-                fontSize = 20.sp
-            )
-            Text(text = type,
-                modifier = Modifier.padding(8.dp),
-                color = Color(0xFFFFFFFF),
-                fontFamily = FontFamily.Serif,
-                fontWeight = FontWeight.Bold,
-                fontSize = 20.sp
-            )
-            Text(text = quantity,
-                modifier = Modifier.padding(16.dp),
-                color = Color(0xFFFFFFFF),
-                fontFamily = FontFamily.Serif,
-                fontWeight = FontWeight.Bold,
-                fontSize = 20.sp
-            )
-            Text(text = date,
-                modifier = Modifier.padding(8.dp),
-                color = Color(0xFFFFFFFF),
-                fontFamily = FontFamily.Serif,
-                fontWeight = FontWeight.Bold,
-                fontSize = 20.sp
-            )
+
+            if (isDetailsVisible) {
+                Text(text = "ID: $idNumber", modifier = Modifier.padding(8.dp))
+                Text(text = "Route: $type", modifier = Modifier.padding(8.dp))
+                Text(text = "Tickets: $tickets", modifier = Modifier.padding(8.dp))
+                Text(text = "Date: $date", modifier = Modifier.padding(8.dp))
+            }
         }
-
-
     }
 }
-
-
 
 @Preview
 @Composable
 fun DetailsScreenPreview() {
     DetailsScreen(rememberNavController())
-
 }
+

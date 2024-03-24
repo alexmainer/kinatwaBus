@@ -44,7 +44,7 @@ fun IndexScreen(controller: NavHostController) {
         Text(
             text = "KINATWA SACCO",
             fontWeight = FontWeight.Bold,
-            color = Color(0xFFFF9800),
+            color = Color(0xFF4CAF50),
             fontFamily = FontFamily.SansSerif,
             fontSize = 40.sp
         )
@@ -54,7 +54,7 @@ fun IndexScreen(controller: NavHostController) {
         Spacer(modifier = Modifier.height(19.dp))
 
         Image(
-            painter = painterResource(id = R.drawable.k_l),
+            painter = painterResource(id = R.drawable.kin_logo),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -62,7 +62,7 @@ fun IndexScreen(controller: NavHostController) {
                 .clip(CircleShape)
                 .border(
                     width = 5.dp,
-                    color = Color.Black,
+                    color = Color(0xFF4CAF50),
                     shape = CircleShape
                 )
         )
@@ -83,7 +83,7 @@ fun IndexScreen(controller: NavHostController) {
                       controller.navigate(ROUTE_REGISTER)
 
             },
-            colors = ButtonDefaults.buttonColors(Color.Black),
+            colors = ButtonDefaults.buttonColors(Color(0xFF4CAF50)),
         )
         {
             Text(
