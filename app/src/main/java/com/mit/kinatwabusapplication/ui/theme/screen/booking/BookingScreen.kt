@@ -150,9 +150,6 @@ fun BookingScreen(controller: NavHostController) {
 
 
 
-
-
-
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
@@ -174,6 +171,35 @@ fun BookingScreen(controller: NavHostController) {
         var quantity by remember { mutableStateOf("") }
         //var selectedDate by remember { mutableStateOf<Date?>(null) }
         var date by remember { mutableStateOf("") }
+
+        // Define the prices for each bus route
+        val nairobiToVoiPrice = 1000
+        val nairobiToKituiPrice = 500
+        val nairobiToMwingiPrice = 500
+        val nairobiToMachakosPrice = 500
+        val nairobiToWotePrice = 500
+        val mombasaToNairobiPrice = 1500
+        val mombasaToVoiPrice = 1300
+        val mombasaToKituiPrice = 1800
+        val mombasaToMwingiPrice = 1500
+        val mombasaToMachakosPrice = 1500
+        val mombasaToWotePrice = 1500
+
+// Calculate the total price based on the selected bus route and quantity
+        val totalPrice = when (selectedbusroute) {
+            "Nairobi to Voi" -> nairobiToVoiPrice * quantity.toInt()
+            "Nairobi to Kitui" -> nairobiToKituiPrice * quantity.toInt()
+            "Nairobi to Mwingi" -> nairobiToMwingiPrice * quantity.toInt()
+            "Nairobi to Machakos" -> nairobiToMachakosPrice * quantity.toInt()
+            "Nairobi to Wote" -> nairobiToWotePrice * quantity.toInt()
+            "Mombasa to Nairobi" -> mombasaToNairobiPrice * quantity.toInt()
+            "Mombasa to Voi" -> mombasaToVoiPrice * quantity.toInt()
+            "Mombasa to Kitui" -> mombasaToKituiPrice * quantity.toInt()
+            "Mombasa to Mwingi" -> mombasaToMwingiPrice * quantity.toInt()
+            "Mombasa to Machakos" -> mombasaToMachakosPrice * quantity.toInt()
+            "Mombasa to Wote" -> mombasaToWotePrice * quantity.toInt()
+            else -> 0 // Handle default case
+        }
 
 
         OutlinedTextField(
@@ -229,18 +255,6 @@ fun BookingScreen(controller: NavHostController) {
         )
 
 
-        OutlinedDropdown(
-            value = selectedbusroute,
-            onValueChange = { selectedbusroute = it },
-            options = busroutes,
-            label = { Text("Routes",color = Color(0xFF4CAF50)) },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-
-        )
-
-
         OutlinedTextField(
             value = quantity,
             label = { Text(text = "Tickets", color =Color(0xFF4CAF50)) },
@@ -265,6 +279,19 @@ fun BookingScreen(controller: NavHostController) {
                 )
             }
         )
+        OutlinedDropdown(
+            value = selectedbusroute,
+            onValueChange = { selectedbusroute = it },
+            options = busroutes,
+            label = { Text("Routes",color = Color(0xFF4CAF50)) },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+
+            )
+
+        Text("Total Price: $totalPrice", modifier = Modifier.padding(8.dp),color= Color.Black)
+
         CustomDatePicker(
             selectedDate = selectedDate,
             onDateSelected = { date -> selectedDate = date }

@@ -18,7 +18,6 @@ import com.mit.kinatwabusapplication.ui.theme.screen.contact.ContactScreen
 import com.mit.kinatwabusapplication.ui.theme.screen.details.DetailsScreen
 import com.mit.kinatwabusapplication.ui.theme.screen.home.HomeScreen
 import com.mit.kinatwabusapplication.ui.theme.screen.index.IndexScreen
-import com.mit.kinatwabusapplication.ui.theme.screen.kidbikes.KidBikesScreen
 import com.mit.kinatwabusapplication.ui.theme.screen.login.LoginScreen
 import com.mit.kinatwabusapplication.ui.theme.screen.mombasaterminal.MountainBikesScreen
 import com.mit.kinatwabusapplication.ui.theme.screen.register.RegisterScreen
@@ -50,9 +49,7 @@ fun AppNavHost(
         composable(ROUTE_CITY_BIKES){
             CityBikesScreen(controller)
         }
-        composable(ROUTE_KID_BIKES){
-            KidBikesScreen(controller)
-        }
+
         composable(ROUTE_BOOKING){
             BookingScreen(controller)
         }

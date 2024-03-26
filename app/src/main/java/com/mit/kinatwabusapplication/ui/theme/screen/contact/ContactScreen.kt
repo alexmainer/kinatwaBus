@@ -37,6 +37,7 @@ import androidx.navigation.compose.rememberNavController
 import com.mit.kinatwabusapplication.R
 import com.mit.kinatwabusapplication.navigation.ROUTE_ABOUT
 import com.mit.kinatwabusapplication.navigation.ROUTE_CONTACT_US
+import com.mit.kinatwabusapplication.navigation.ROUTE_DETAILS
 import com.mit.kinatwabusapplication.navigation.ROUTE_HOME
 
 
@@ -105,6 +106,18 @@ fun ContactScreen(controller: NavHostController) {
                             .padding(4.dp)
                             .clickable {
                                 controller.navigate(ROUTE_CONTACT_US)
+                            }
+                    )
+
+                    Text(
+                        text = "RECEIPTS",
+                        fontWeight = FontWeight.Bold,
+                        color = Color(0xFF4CAF50),
+//                    style = MaterialTheme.typography.h6,
+                        modifier = Modifier
+                            .padding(4.dp)
+                            .clickable {
+                                controller.navigate(ROUTE_DETAILS)
                             }
                     )
 

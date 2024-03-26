@@ -2,7 +2,10 @@ package com.mit.kinatwabusapplication.ui.theme.screen.mombasaterminal
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,8 +19,10 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -31,7 +36,12 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.mit.kinatwabusapplication.R
+import com.mit.kinatwabusapplication.navigation.ROUTE_ABOUT
 import com.mit.kinatwabusapplication.navigation.ROUTE_BOOKING
+import com.mit.kinatwabusapplication.navigation.ROUTE_CONTACT_US
+import com.mit.kinatwabusapplication.navigation.ROUTE_DETAILS
+import com.mit.kinatwabusapplication.navigation.ROUTE_HOME
+import com.mit.kinatwabusapplication.ui.theme.screen.home.NavigationItem
 
 @Composable
 fun MountainBikesScreen(controller: NavHostController) {
@@ -41,6 +51,56 @@ fun MountainBikesScreen(controller: NavHostController) {
             .verticalScroll(rememberScrollState()),
         )
     {
+
+
+        Surface(
+            color= Color.Transparent,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp)
+        ) {
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+                    .background(Color.White) // Background color of the card
+                    .clickable { /* Handle card click if needed */ }
+            ) {
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 10.dp),
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+
+                    NavigationItem(
+                        text = "HOME",
+                        route = ROUTE_HOME,
+                        controller = controller
+                    )
+
+                    NavigationItem(
+                        text = "ABOUT US",
+                        route = ROUTE_ABOUT,
+                        controller = controller
+                    )
+
+                    NavigationItem(
+                        text = "CONTACT US",
+                        route = ROUTE_CONTACT_US,
+                        controller = controller
+                    )
+
+                    NavigationItem(
+                        text = "RECEIPTS",
+                        route = ROUTE_DETAILS,
+                        controller = controller
+                    )
+                }
+            }
+        }
 
         Text(
             text = "MOMBASA TERMINAL",

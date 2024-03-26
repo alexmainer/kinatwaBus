@@ -64,7 +64,7 @@ fun HomeScreen(controller: NavHostController) {
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(8.dp)
+                    .padding(6.dp)
                     .background(Color.White) // Background color of the card
                     .clickable { /* Handle card click if needed */ }
             ) {
@@ -72,7 +72,7 @@ fun HomeScreen(controller: NavHostController) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 10.dp),
+                        .padding(horizontal = 6.dp),
                     horizontalArrangement = Arrangement.SpaceEvenly,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -91,6 +91,11 @@ fun HomeScreen(controller: NavHostController) {
 
                     NavigationItem(
                         text = "CONTACT US",
+                        route = ROUTE_CONTACT_US,
+                        controller = controller
+                    )
+                    NavigationItem(
+                        text = "RECEIPTS",
                         route = ROUTE_CONTACT_US,
                         controller = controller
                     )
@@ -234,7 +239,7 @@ fun HomeScreen(controller: NavHostController) {
 }
 
 @Composable
-private fun NavigationItem(text: String, route: String, controller: NavHostController) {
+fun NavigationItem(text: String, route: String, controller: NavHostController) {
     Text(
         text = text,
         color = Color(0xFF4CAF50),
